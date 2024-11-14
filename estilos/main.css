@@ -1,0 +1,849 @@
+@charset "UTF-8";
+/*Cuerpo(body)*/
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/*header*/
+header {
+  background-color: #100e0f;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 80px;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  margin-right: 20px;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #198fd9;
+}
+
+.btn-reserva {
+  background-color: #198fd9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-reserva:hover {
+  background-color: #65bd7d;
+}
+
+.hero-section {
+  background: url("../img/primeraimg.jpg") no-repeat center center/cover;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+  color: white;
+}
+
+.hero-content h1 {
+  color: white;
+  font-size: 2.5rem;
+}
+
+.hero-content p {
+  color: white;
+  font-size: 1.5rem;
+  max-width: 500px;
+}
+
+.btn-reserva {
+  background-color: #198fd9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-reserva:hover {
+  background-color: #65bd7d;
+}
+
+/* Experiencias in */
+.titulo-experiencias {
+  color: #198fd9;
+  text-align: left;
+  margin-left: 40px;
+  font-size: 40px;
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+
+/* para el albun */
+.album1, .album2 {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.card {
+  flex: 1;
+  margin: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  height: 270px;
+  background-color: #ccc;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title, .card-text {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.card-text {
+  font-size: 0.875rem;
+}
+
+/*franja tecnologia*/
+.tecnologia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tecnologia-img img {
+  width: 80%;
+  height: auto;
+  margin-left: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.tecnologia-content {
+  width: 50%;
+  padding: 20px;
+  padding-right: 40px;
+}
+
+.tecnologia-content h1, .tecnologia-content h2 {
+  margin: 0;
+  color: #000;
+}
+
+.tecnologia-content p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.btn-reserva {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+
+.btn-reserva:hover {
+  background-color: #65bd7d;
+}
+
+@media (max-width: 768px) {
+  .tecnologia {
+    flex-direction: column;
+  }
+  .tecnologia-img, .tecnologia-content {
+    width: 100%;
+  }
+}
+/* Cumpleaños inicio */
+.cumpleaños-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  padding: 20px;
+}
+
+.cumpleaños-content {
+  max-width: 50%;
+  padding-right: 200px;
+  padding-left: 40px;
+}
+
+.cumpleaños-content h1, .cumpleaños-content h2 {
+  margin: 0;
+  color: #000;
+}
+
+.cumpleaños-content p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.cumpleaños-img {
+  max-width: 50%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+.cumpleaños-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.btn-cumpleaños {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+
+.btn-cumpleaños:hover {
+  background-color: #65bd7d;
+}
+
+@media (max-width: 768px) {
+  .cumpleaños-section {
+    flex-direction: column;
+  }
+  .cumpleaños-content,
+  .cumpleaños-img {
+    max-width: 100%;
+  }
+  .cumpleaños-img {
+    margin-top: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 20px;
+  }
+}
+/*franja tecnologia*/
+.section-Titulo h2 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #008CBA;
+  font-size: 50px;
+}
+
+/*Carrusel*/
+#carouselExampleIndicators {
+  margin-top: 30px;
+}
+
+#carouselExampleIndicators .carousel-item img {
+  height: 95vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*carrusel*/
+.contact-form {
+  background-size: cover;
+  padding: 50px 0;
+  color: white;
+  text-align: center;
+}
+
+.form-container {
+  width: 50%;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-row {
+  margin: 10px 0;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+input[type=text],
+input[type=email],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type=checkbox] {
+  margin-right: 5px;
+}
+
+.btn-enviar {
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.btn-enviar:hover {
+  background-color: #65bd7d;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: auto;
+  }
+}
+/* Formulario de Contacto */
+.contact-form {
+  background-image: url("img/contac.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-right: 600px;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 650px;
+}
+
+.form-container {
+  width: 50%;
+  background: rgba(255, 255, 255, 0.808);
+  padding: 20px;
+  border-radius: 30px;
+  max-width: 500px;
+}
+
+.form-row {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.form-row.checkbox {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+input[type=checkbox] {
+  margin-right: 10px;
+  align-self: center;
+}
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+.form-row.half-width input {
+  width: 50%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 2%;
+}
+
+.btn-enviar {
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 50%;
+  margin: 10px auto;
+  display: block;
+}
+
+.btn-enviar:hover {
+  background-color: #65bd7d;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .elemento {
+    padding-left: 20px;
+  }
+}
+/*politicas*/
+.politicas {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.politicas h1 {
+  font-size: 2.5em;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.politicas h2 {
+  font-size: 1.8em;
+  color: #444;
+  margin-top: 30px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.politicas h3 {
+  font-size: 1.5em;
+  color: #666;
+  margin-top: 20px;
+}
+
+.politicas p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  text-align: justify;
+  color: #333;
+}
+
+.politicas ul {
+  margin: 20px 0;
+  padding-left: 40px;
+}
+
+.politicas ul li {
+  font-size: 1.1em;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.politicas a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.politicas a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.politicas table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  font-size: 1em;
+  text-align: left;
+}
+
+.politicas table th, .politica table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+.politicas table th {
+  background-color: #f1f1f1;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.politicas .important {
+  background-color: #f8d7da;
+  padding: 15px;
+  border-left: 4px solid #f5c6cb;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #721c24;
+}
+
+/* politicas Estilos Responsive */
+@media (max-width: 768px) {
+  .politicas {
+    padding: 20px;
+    margin: 30px auto;
+  }
+  .politicas h1 {
+    font-size: 2em;
+  }
+  .politicas h2 {
+    font-size: 1.5em;
+  }
+  .politicas h3 {
+    font-size: 1.3em;
+  }
+  .politicas p, .politica ul li {
+    font-size: 1em;
+  }
+}
+/*Ofertas*/
+.ofertas {
+  display: flex;
+  justify-content: center;
+  margin: 50px 20px;
+  align-items: stretch;
+}
+
+.tarjeta {
+  background-color: #333;
+  color: white;
+  padding: 40px;
+  margin: 30px; /* Mayor separación entre tarjetas */
+  width: 450px; /* Aumento del ancho de las tarjetas normales */
+  height: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tarjeta-destacada {
+  background-color: #4CAF50;
+  width: 400px; /* Hace esta tarjeta más grande */
+}
+
+.tarjeta:hover {
+  transform: scale(1.1); /* Aumento del efecto zoom al pasar el cursor */
+}
+
+.tarjeta ul {
+  list-style: circle;
+  padding-left: 20px;
+}
+
+.tarjeta ul li {
+  font-size: 19px;
+}
+
+.tarjeta button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.tarjeta button:hover {
+  background-color: #65bd7d;
+}
+
+.line-through {
+  text-decoration: line-through;
+  text-decoration-color: #ff0000;
+  text-decoration-style: solid;
+  text-decoration-thickness: 3px;
+}
+
+/*nosotros*/
+.team {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.team h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.team-member {
+  display: inline-block;
+  width: 300px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.team-member h3 {
+  font-size: 1.5rem;
+  margin: 20px 0 10px;
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: #666;
+  padding: 0 20px 20px;
+}
+
+.map {
+  padding: 50px 20px;
+  justify-content: center;
+}
+
+.map-wrapper {
+  display: flex;
+  text-align: center;
+}
+
+/*reservar*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Estilos para las columnas */
+.col-md-6 {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Mejoras para el formulario */
+form {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type=number],
+select,
+input[type=text],
+input[type=email] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  display: block;
+}
+
+button.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Estilo para la información adicional */
+.px-3 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-4 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.reserva-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.reserva-container li {
+  padding: 10px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.reserva-container li:last-child {
+  border-bottom: none;
+}
+
+.reserva-container h2 {
+  color: #343a40;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Mejoras para el formulario específico de reservas */
+.reserva-form {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reserva-form .form-group {
+  margin-bottom: 20px;
+}
+
+.reserva-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.reserva-form input[type=number],
+.reserva-form select,
+.reserva-form input[type=text],
+.reserva-form input[type=email] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  display: block;
+}
+
+.reserva-form button.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.reserva-form button.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(15, 13, 14);
+  color: white;
+}
+footer .social {
+  display: flex;
+}
+footer .social a {
+  margin-right: 10px;
+  color: white;
+}
+footer .social a img {
+  width: 30px;
+}
+footer .info {
+  text-align: right;
+}
+
+.footer-section {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.footer-section img.icon {
+  width: 40px;
+  margin-right: 15px;
+}
+
+.footer-section p {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.footer-section2 img.icon {
+  width: 40px;
+  margin-right: 15px;
+}
+.footer-section2 p {
+  font-size: 1.25rem;
+  margin: 0 0 16px 0;
+}
+.footer-section2 p a {
+  color: white;
+  text-decoration: none;
+}
+.footer-section2 p a:hover {
+  color: #007bff;
+}
+
+.social-icons a {
+  margin-right: 20px;
+}
+
+.social-icons img {
+  width: 40px;
+}
+
+.logo {
+  width: 180px;
+}/*# sourceMappingURL=main.css.map */
