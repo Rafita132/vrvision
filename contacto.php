@@ -1,13 +1,12 @@
 <?php
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = strip_tags(trim($_POST["nombre"]));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $telefono = trim($_POST["telefono"]);
     $mensaje = trim($_POST["mensaje"]);
 
     $para = 'litelralph@vrvisions.eu';
-
     $asunto = "Nuevo mensaje de contacto de $nombre";
 
     $contenido_email = "Nombre: $nombre\n";
@@ -19,13 +18,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $success = mail($para, $asunto, $contenido_email, $encabezados);
     if ($success) {
-        header('Location: gracias.html');
+        // Mostrar un mensaje emergente usando JavaScript
+        echo "<script type='text/javascript'>
+                alert('Gracias por contactar con VRVisions, le contestaremos lo antes posible dentro de nuestro horario comercial.');
+                window.location.href = 'index.php'; // Redirigir después del mensaje
+              </script>";
     } else {
-        echo 'Oops! Algo salió mal y no pudimos enviar tu mensaje.';
+        echo '<p>Oops! Algo salió mal y no pudimos enviar tu mensaje.</p>';
     }
 } else {
-
     http_response_code(403);
-    echo "Hubo un problema con tu envío, por favor intenta de nuevo.";
+    echo "<p>Hubo un problema con tu envío, por favor intenta de nuevo.</p>";
 }
+
 ?>

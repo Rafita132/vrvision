@@ -1,20 +1,19 @@
 <?php
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitizar la entrada de los datos del formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $nombre = strip_tags(trim($_POST["nombre"]));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $telefono = trim($_POST["telefono"]);
     $fecha = trim($_POST["fecha"]);
     $hora = trim($_POST["hora"]);
     $pack = trim($_POST["pack"]);
+    $cumpleanos = trim($_POST["cumpleanos"]);
+    $personas = isset($_POST["personas"]) ? trim($_POST["personas"]) : '';
 
-    // Definir el destinatario del correo electrónico
     $para = 'litelralph@vrvisions.eu';
 
-    // Asunto del correo
     $asunto = "Nueva reserva de $nombre";
 
-    // Contenido del correo electrónico
     $contenido_email = "Detalles de la Reserva:\n";
     $contenido_email .= "Nombre: $nombre\n";
     $contenido_email .= "Email: $email\n";
@@ -22,22 +21,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $contenido_email .= "Fecha: $fecha\n";
     $contenido_email .= "Hora: $hora\n";
     $contenido_email .= "Pack Seleccionado: $pack\n";
+    $contenido_email .= "Cumpleaños: " . ($cumpleanos === 'si' ? 'Sí' : 'No') . "\n";
+    if ($cumpleanos === 'si' && !empty($personas)) {
+        $contenido_email .= "Número de personas: $personas\n";
+    }
 
-    // Encabezados del correo
     $encabezados = "From: $nombre <$email>";
 
-    // Enviar el correo
     $success = mail($para, $asunto, $contenido_email, $encabezados);
 
-    // Verificar si el correo se envió correctamente
     if ($success) {
-        header('Location: gracias.html');
-        exit();
+        echo "<script>
+                alert('Gracias por contactar con VRVisions, le contestaremos lo antes posible dentro de nuestro horario comercial.');
+                window.location.href = 'index.php'; // Redirigir al usuario al inicio después de cerrar el alert
+              </script>";
     } else {
-        echo 'Oops! Algo salió mal y no pudimos enviar tu reserva.';
+        echo "<script>
+                alert('Oops! Algo salió mal y no pudimos enviar tu reserva.');
+              </script>";
     }
 } else {
     http_response_code(403);
-    echo "Hubo un problema con tu envío, por favor intenta de nuevo.";
+    echo "<p>Hubo un problema con tu envío, por favor intenta de nuevo.</p>";
 }
 ?>

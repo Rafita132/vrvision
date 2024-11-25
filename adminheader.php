@@ -16,10 +16,7 @@
         </a>
         <div class="spacer"></div>
         <nav>
-            <a href="nosotros.php">Nosotros</a>
-            <a href="juegos.php">Juegos</a>
-            <a href="index.php#contact-form">Contacto</a>
-            <button class="btn-reserva" onclick="window.location.href='reservas.php';">Reserva</button>
+            <a href="adminreservas.php">Reserva</a>
+            <a href="adminjuegos.php">Juegos</a>
         </nav>
     </header>
-    
