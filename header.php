@@ -22,4 +22,6 @@
             <button class="btn-reserva" onclick="window.location.href='reservas.php';">Reserva</button>
         </nav>
     </header>
-    
+    <div class="advertencia">
+        <p>Esta web no está funcional. Es un proyecto de fin de curso.</p>
+    </div>
