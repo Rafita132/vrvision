@@ -1,92 +1,83 @@
-<?php include 'header.php'; ?>
+<?php
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <form action="reserva.php" method="post">
-                <div class="form-group">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" required>
-                </div>
+include 'conexion.php';
 
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" class="form-control" required>
-                </div>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                <div class="form-group">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="text" name="telefono" id="telefono" class="form-control" required>
-                </div>
+    $nombre = $conn->real_escape_string(strip_tags(trim($_POST["nombre"])));
+    $email = $conn->real_escape_string(filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL));
+    $telefono = $conn->real_escape_string(trim($_POST["telefono"]));
+    $fecha = $conn->real_escape_string(trim($_POST["fecha"]));
+    $hora = $conn->real_escape_string(trim($_POST["hora"]));
+    $pack = $conn->real_escape_string(trim($_POST["pack"]));
+    $cumpleanos = isset($_POST["cumpleanos"]) ? $conn->real_escape_string(trim($_POST["cumpleanos"])) : 'no';
+    $personas = isset($_POST["personas"]) && !empty($_POST["personas"]) ? intval(trim($_POST["personas"])) : 1;
 
-                <div class="form-group">
-                    <label for="fecha">Fecha de la Reserva:</label>
-                    <input type="date" name="fecha" id="fecha" class="form-control" required>
-                </div>
+    $sql_check = "SELECT SUM(personas) AS total_personas FROM Reservas WHERE fecha = '$fecha' AND hora = '$hora'";
+    $result = $conn->query($sql_check);
 
-                <div class="form-group">
-                    <label for="hora">Hora de la Reserva:</label>
-                    <select name="hora" id="hora" class="form-control" required>
-                        <option value="">-- Selecciona una Hora --</option>
-                        <?php
-                        for ($i = 12; $i <= 20; $i++) {
-                            echo "<option value='$i:00'>$i:00</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
+    if ($result) {
+        $row = $result->fetch_assoc();
+        $total_personas = $row['total_personas'] ?? 0;
 
-                <div class="form-group">
-                    <label for="pack">Selecciona tu Pack:</label>
-                    <select name="pack" id="pack" class="form-control" required>
-                        <option value="">-- Selecciona un Pack --</option>
-                        <option value="Pack ECO">Pack ECO</option>
-                        <option value="Pack TOTAL Experience">Pack TOTAL Experience</option>
-                        <option value="Sala de Escape RV">Sala de Escape RV</option>
-                    </select>
-                </div>
+        if (($total_personas + $personas) > 8) {
+            echo "<script>
+                    alert('La capacidad máxima de 8 personas para la hora seleccionada ya ha sido alcanzada. Por favor, elige otra hora o reduce el número de personas.');
+                    window.location.href = 'reservas.php'; // Redirigir de nuevo a la página de reservas
+                  </script>";
+            exit();
+        }
+    } else {
+        echo "<script>
+                alert('Error al verificar la disponibilidad: " . $conn->error . "');
+                window.location.href = 'reservas.php'; // Redirigir de nuevo a la página de reservas
+              </script>";
+        exit();
+    }
 
-                <div class="form-group">
-                    <label for="cumpleanos">¿Es para un cumpleaños?</label>
-                    <select name="cumpleanos" id="cumpleanos" class="form-control">
-                        <option value="">-- Selecciona una opción --</option>
-                        <option value="si">Sí</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
+    $para = 'litelralph@vrvisions.eu';
 
-                <!-- Mostrar siempre el campo de Número de personas -->
-                <div class="form-group">
-                    <label for="personas">Número de personas (máximo 8):</label>
-                    <input type="number" name="personas" id="personas" class="form-control" min="1" max="8">
-                </div>
+    $asunto = "Nueva reserva de $nombre";
 
-                <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Enviar</button>
-            </form>
-        </div>
+    $contenido_email = "Detalles de la Reserva:\n";
+    $contenido_email .= "Nombre: $nombre\n";
+    $contenido_email .= "Email: $email\n";
+    $contenido_email .= "Teléfono: $telefono\n";
+    $contenido_email .= "Fecha: $fecha\n";
+    $contenido_email .= "Hora: $hora\n";
+    $contenido_email .= "Pack Seleccionado: $pack\n";
+    $contenido_email .= "Cumpleaños: " . ($cumpleanos === 'si' ? 'Sí' : 'No') . "\n";
+    $contenido_email .= "Número de personas: $personas\n";
 
-        <div class="col-md-6 px-3 py-4">
-            <h2>Información adicional:</h2>
-            <p>Reserva realidad virtual en Málaga. Elige entre las diferentes opciones que tenemos en nuestro centro, para reservar realidad virtual en Málaga:</p>
-            <ul>
-                <li><strong>Experiencia RV:</strong> Disfruta de 1 Experiencia básica de 10 minutos de Realidad Virtual.
-                    Ideal para iniciarse o para aquellos que simplemente quieran probar la nueva tecnología de la que
-                    todos hablan.</li>
-                <li><strong>Pack ECO:</strong> Si quieres más, esta es la opción recomendada para la mayoría de los
-                    usuarios. Prueba 1 Experiencia Premium de 20 minutos y además te regalamos un simulador de realidad
-                    virtual a elegir (montaña rusa o simulador de conducción)</li>
-                <li><strong>Pack TOTAL Experience:</strong> Esta es la opción más amplia para los más jugones. Disfruta
-                    de 40 minutos donde podrás elegir varias experiencias básicas o premium de tu elección. Además,
-                    disfrutarás de un simulador de realidad virtual a elegir.</li>
-                <li><strong>Sala de Escape RV:</strong> Somos el único lugar donde poder disfrutar de salas de escape en
-                    Realidad Virtual en Málaga. Disponemos de múltiples salas de escape para disfrutar con diferentes
-                    niveles de dificultad para jugar hasta 4 personas de forma simultánea. Tendrás un máximo de 60
-                    minutos para poder resolver los puzles y escapar de los diferentes escenarios.</li>
-            </ul>
-            <p>Recuerda que si vienes sin reserva previa, también podrás jugar aunque quizás tendrás que esperar un poco
-                ya que atendemos por orden de llegada.</p>
-        </div>
-    </div>
-</div>
+    $encabezados = "From: $nombre <$email>";
 
-<?php include 'footer.php'; ?>
+    $success = mail($para, $asunto, $contenido_email, $encabezados);
+
+    if ($success) {
+        $sql_insert = "INSERT INTO Reservas (nombre, email, telefono, fecha, hora, pack, cumpleanos, personas)
+                       VALUES ('$nombre', '$email', '$telefono', '$fecha', '$hora', '$pack', '$cumpleanos', $personas)";
+
+        if ($conn->query($sql_insert) === TRUE) {
+            echo "<script>
+                    alert('Reserva enviada correctamente y almacenada en la base de datos.');
+                    window.location.href = 'index.php'; // Redirigir al usuario al inicio después de cerrar el alert
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Error al almacenar la reserva en la base de datos: " . $conn->error . "');
+                    window.location.href = 'reservas.php'; // Redirigir de nuevo a la página de reservas
+                  </script>";
+        }
+    } else {
+        echo "<script>
+                alert('Oops! Algo salió mal y no pudimos enviar tu reserva.');
+                window.location.href = 'reservas.php'; // Redirigir de nuevo a la página de reservas
+              </script>";
+    }
+} else {
+    http_response_code(403);
+    echo "<p>Hubo un problema con tu envío, por favor intenta de nuevo.</p>";
+}
+
+$conn->close();
+?>
