@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $success = mail($para, $asunto, $contenido_email, $encabezados);
     if ($success) {
-        // Mostrar un mensaje emergente usando JavaScript
         echo "<script type='text/javascript'>
                 alert('Gracias por contactar con VRVisions, le contestaremos lo antes posible dentro de nuestro horario comercial.');
                 window.location.href = 'index.php'; // Redirigir después del mensaje
