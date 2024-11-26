@@ -55,7 +55,8 @@
                     </select>
                 </div>
 
-                <div class="form-group" id="personas-group" style="display: none;">
+                <!-- Mostrar siempre el campo de Número de personas -->
+                <div class="form-group">
                     <label for="personas">Número de personas (máximo 8):</label>
                     <input type="number" name="personas" id="personas" class="form-control" min="1" max="8">
                 </div>
@@ -87,18 +88,5 @@
         </div>
     </div>
 </div>
-
-<script>
-
-document.getElementById('cumpleanos').addEventListener('change', function() {
-    const personasGroup = document.getElementById('personas-group');
-    if (this.value === 'si') {
-        personasGroup.style.display = 'block';
-    } else {
-        personasGroup.style.display = 'none';
-        document.getElementById('personas').value = ''; 
-    }
-});
-</script>
 
 <?php include 'footer.php'; ?>
