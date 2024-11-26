@@ -15,6 +15,21 @@ header {
   align-items: center;
 }
 
+/* Advertencia */
+.advertencia {
+  background-color: #0056b3;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.advertencia-p {
+  margin: 0;
+}
+
 .logo {
   width: 100px;
 }
