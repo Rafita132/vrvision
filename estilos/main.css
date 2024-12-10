@@ -365,7 +365,7 @@ textarea {
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  height: 650px;
+  height: 680px;
 }
 
 .form-container {
@@ -1070,4 +1070,149 @@ footer .info {
 
 .logo {
   width: 180px;
+}
+
+/* Estilo general del login */
+.login-page {
+  background: linear-gradient(to bottom right, #1a2980, #26d0ce); 
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  overflow: hidden; 
+  font-family: "Roboto", sans-serif; 
+}
+
+/* Contenedor del formulario */
+.login-container {
+  background: rgba(255, 255, 255, 0.9); 
+  padding: 50px 40px; /* Espaciado */
+  width: 100%;
+  max-width: 400px; 
+  border-radius: 20px; 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out; 
+}
+
+/* Título del formulario */
+.login-title {
+  font-size: 2.5rem; 
+  font-weight: bold;
+  color: #1a2980; 
+  margin-bottom: 20px; 
+  letter-spacing: 1.2px; 
+  text-transform: uppercase; 
+  animation: fadeSlideIn 1s ease-in-out; 
+}
+
+/* Animación del título */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Estilo del mensaje de error */
+.login-error {
+  color: #e74c3c; 
+  background: #fceae9; 
+  border: 1px solid #e74c3c; 
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px; 
+  animation: shake 0.5s; 
+}
+
+/* Animación de error */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+/* Campos del formulario */
+.form-login {
+  margin-bottom: 20px;
+  text-align: left; 
+}
+
+.form-login label {
+  font-size: 1rem;
+  color: #333; 
+  font-weight: bold;
+  display: block; 
+  margin-bottom: 5px;
+}
+
+/* Inputs */
+.form-login input[type=text],
+.form-login input[type=password] {
+  width: 100%;
+  padding: 12px 15px; 
+  font-size: 1rem;
+  border: 2px solid #1a2980; 
+  border-radius: 10px; 
+  background: #f9f9f9; 
+  transition: all 0.3s ease; 
+}
+
+/* Efecto al enfocar */
+.form-login input[type=text]:focus,
+.form-login input[type=password]:focus {
+  outline: none;
+  border-color: #26d0ce; 
+  box-shadow: 0 0 8px rgba(38, 208, 206, 0.5); 
+}
+
+/* Botón de enviar */
+.btn-enviar {
+  background: linear-gradient(to right, #1a2980, #26d0ce); 
+  color: #ffffff;
+  padding: 12px 20px; 
+  border: none;
+  border-radius: 15px; 
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+}
+
+/* Hover en el botón */
+.btn-enviar:hover {
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  background: linear-gradient(to left, #1a2980, #26d0ce); 
+}
+
+/* Animación para el formulario */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* Responsive */
+@media (max-width: 500px) {
+  .login-container {
+    padding: 30px 20px; 
+  }
+  .login-title {
+    font-size: 1.8rem; 
+  }
 }/*# sourceMappingURL=main.css.map */
