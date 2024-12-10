@@ -39,6 +39,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edit'])) {
 
     if ($stmt->execute()) {
         echo "<script>alert('Reserva actualizada correctamente.');</script>";
+
+        // Enviar correo electrónico al cliente
+        $from = "literalph@vrvisions.eu";
+        $to = $email;
+        $subject = "Actualización de tu reserva";
+        $message = "Hola $nombre,\n\nTu reserva ha sido actualizada con los siguientes detalles:\n\n" .
+                   "Fecha: $fecha\nHora: $hora\nPack: $pack\nNúmero de personas: $personas\n" .
+                   "Cumpleaños: $cumpleanos\n\nGracias por confiar en nosotros.\n\nSaludos,\nEquipo de VRVisions";
+        $headers = "From: $from";
+
+        if (mail($to, $subject, $message, $headers)) {
+            echo "<script>alert('Correo enviado al cliente.');</script>";
+        } else {
+            echo "<script>alert('Error al enviar el correo al cliente.');</script>";
+        }
     } else {
         echo "<script>alert('Error al actualizar la reserva.');</script>";
     }
@@ -46,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edit'])) {
 ?>
 
 <div class="container mt-5">
-
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
