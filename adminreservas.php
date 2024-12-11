@@ -11,12 +11,38 @@ include 'adminheader.php';
 
 if (isset($_GET['delete_id'])) {
     $id = intval($_GET['delete_id']);
+
+    $sql_select = "SELECT nombre, email FROM Reservas WHERE id = ?";
+    $stmt_select = $conn->prepare($sql_select);
+    $stmt_select->bind_param('i', $id);
+    $stmt_select->execute();
+    $result_select = $stmt_select->get_result();
+    $cliente = $result_select->fetch_assoc();
+
     $sql_delete = "DELETE FROM Reservas WHERE id = ?";
     $stmt = $conn->prepare($sql_delete);
     $stmt->bind_param('i', $id);
 
     if ($stmt->execute()) {
         echo "<script>alert('Reserva eliminada correctamente.');</script>";
+
+        if ($cliente) {
+            $nombre = $cliente['nombre'];
+            $email = $cliente['email'];
+
+            $from = "literalph@vrvisions.eu";
+            $to = $email;
+            $subject = "Cancelación de tu reserva";
+            $message = "Hola $nombre,\n\nLamentamos informarte que tu reserva ha sido cancelada.\n" .
+                       "Si necesitas más información, no dudes en contactarnos.\n\nSaludos cordiales,\nEquipo de VR Visions";
+            $headers = "From: $from";
+
+            if (mail($to, $subject, $message, $headers)) {
+                echo "<script>alert('Correo de cancelación enviado al cliente.');</script>";
+            } else {
+                echo "<script>alert('Error al enviar el correo de cancelación.');</script>";
+            }
+        }
     } else {
         echo "<script>alert('Error al eliminar la reserva.');</script>";
     }
@@ -40,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edit'])) {
     if ($stmt->execute()) {
         echo "<script>alert('Reserva actualizada correctamente.');</script>";
 
-        // Enviar correo electrónico al cliente
         $from = "literalph@vrvisions.eu";
         $to = $email;
         $subject = "Actualización de tu reserva";
@@ -188,6 +213,9 @@ function confirmDelete(id) {
 
 <?php include 'adminfooter.php'; ?>
 
+<?php
+$conn->close();
+?>
 <?php
 $conn->close();
 ?>
